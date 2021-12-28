@@ -1,0 +1,61 @@
+{% extends 'layouts.html' %}
+
+
+{% block content %}
+
+{% include '_messages.html' %}
+
+<div class="container">
+    <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h3 class="text-center" style="background-color: #e8eed6;">Cadastrar Árvores nas Praças</h3>
+        
+        {% from "_formhelpers.html" import render_field %}
+        <form action="" method="POST" enctype="multipart/form-data">
+            <label for="praca"><strong>Selecionar a Praça</strong></label>
+                <select name="praca" id="praca" class="form-control" required>
+                    <option value="">Selecione a Praça</option>
+                    {% for praca in pracas %}
+                    <option value="{{praca.id}}">{{praca.name}}</option>
+                    {% endfor %}
+                </select>
+            
+            <label for="arvore"><strong>Nome popular</strong></label>
+            <select name="arvore" id="arvore" class="form-control" required>
+                <option value="">Selecione uma árvore</option>
+                    {% for arvore in arvores %}
+                <option value="{{arvore.id}}">{{arvore.name}}</option>
+                    {% endfor %}
+            </select>
+
+            <label for="familia"><strong>Família</strong> </label>
+                <select name="familia" id="familia" class="form-control" required>
+                    <option value="">Selecione uma família</option>
+                    {% for familia in familias %}
+                    <option value="{{familia.id}}">{{familia.name}}</option>
+                    {% endfor %}
+                </select>
+          
+            {{ render_field(form.qtd, class="form-control", placeholder="Quantidade")}}
+            {{ render_field(form.origem, class="form-control", placeholder="Origem")}}
+            
+
+
+            <div class="container">
+  
+            </div>
+            <button type="submit" class="btn btn-success mt-2">Cadastrar</button>
+                   
+        </form>
+        <div>
+        <a href="{{url_for('admin')}}" class="btn btn-danger" style="margin-top: -67px; margin-left: 180px;">Cancelar</a>
+    </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+</div>
+
+{% endblock content %}
+
+

@@ -1,0 +1,62 @@
+
+{% extends 'layouts.html' %}
+{% block content %}
+
+    {% include '_messages.html' %}
+    
+ 
+      <div class="container">
+        <div class="col-sm">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e8eed6">
+      <a class="navbar-brand" href="/"><img class="navbar-brand" src="{{url_for('static', filename='images/brasao.png')}}"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/pracas">Praças</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/arvores">Árvores</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/familias">Famílias</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+              </ul>
+              
+            </div>
+          </nav>
+
+    </div>
+    <div class="text-center h1 text-success">Administrador</div>
+
+    {% from "_formhelpers.html" import render_field %}
+    <form method="post" enctype="multipart/form-data">
+        <div>
+            {{ render_field(form.name, class="form-control form-control-sm") }}
+            {{ render_field(form.username, class="form-control form-control-sm") }}
+            {{ render_field(form.email, class="form-control form-control-sm") }}
+            {{ render_field(form.password, class="form-control form-control-sm") }}
+            {{ render_field(form.confirm, class="form-control form-control-sm") }}
+            <!--<input type="file" name="Foto">-->
+            
+        </div>
+        <p><input type=submit value=Registrar class="btn btn-success mt-2"></p>
+    </form>
+</div>
+
+{% endblock content %}
